@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "41644746512",
+    "project_id": "appmp3mvp",
+    "storage_bucket": "appmp3mvp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:41644746512:android:d89a74d33f7a773191a795",
+        "android_client_info": {
+          "package_name": "com.example.appmp3online"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "41644746512-or85m26m88dctatus747ie4vpsl40ln9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTtYin1JYxO4nKDkiKbNRuwfUOBjjDi_s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "41644746512-or85m26m88dctatus747ie4vpsl40ln9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
