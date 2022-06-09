@@ -14,8 +14,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.example.appmp3online.Fragment.FragmentLoginTab;
-import com.example.appmp3online.Fragment.FragmentSignupTab;
+import com.example.appmp3online.Login.Signin.FragmentSigninTab;
+import com.example.appmp3online.Login.Signup.FragmentSignupTab;
 import com.example.appmp3online.R;
 import com.example.appmp3online.databinding.ActivityLoginBinding;
 
@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         binding.tabLayout.setupWithViewPager(binding.viewPager);
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
-        viewPagerAdapter.addFragment(new FragmentLoginTab(),"Login");
+        viewPagerAdapter.addFragment(new FragmentSigninTab(),"Login");
         viewPagerAdapter.addFragment(new FragmentSignupTab(),"Signup");
         binding.viewPager.setAdapter(viewPagerAdapter);
         Animation animation = AnimationUtils.loadAnimation(LoginActivity.this,R.anim.animation_alpha);
