@@ -1,6 +1,6 @@
 package com.example.appmp3online.Login.Signup;
 
 public interface ISignupPresenter {
-    void onSucessfull(String mess);
-    void onError(String mess);
+   void onLoginSignup(String email,String user,String password,String confirmPassword,String phone);
+   void onUnit();
 }

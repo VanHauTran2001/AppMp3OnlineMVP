@@ -15,46 +15,42 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class SigninPresenter implements ISigninPresenter{
-    private Activity getActivity;
+    private ISigninView view;
 
-    public SigninPresenter(Activity getActivity) {
-        this.getActivity = getActivity;
+    public SigninPresenter( ISigninView view) {
+        this.view = view;
     }
 
-    public void onLogin(String email, String passWord){
+    @Override
+    public void onInit() {
+        view.onClickListener();
+    }
+
+    @Override
+    public void onLogin(String email, String password) {
         if (TextUtils.isEmpty(email)){
-            onError("Email can not be empty !");
-        }else if(TextUtils.isEmpty(passWord)){
-            onError("Password can not be empty !");
+            view.onError("Email can not be empty !");
+        }else if(TextUtils.isEmpty(password)){
+            view.onError("Password can not be empty !");
         }else {
             FirebaseAuth Auth = FirebaseAuth.getInstance();
-            ProgressDialog progressDialog = new ProgressDialog(getActivity);;
+            ProgressDialog progressDialog = new ProgressDialog(view.onContext());;
             progressDialog.show();
-            Auth.signInWithEmailAndPassword(email,passWord)
-                    .addOnCompleteListener(getActivity, new OnCompleteListener<AuthResult>() {
+            Auth.signInWithEmailAndPassword(email,password)
+                    .addOnCompleteListener((Activity) view.onContext(), new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             progressDialog.dismiss();
                             if (task.isSuccessful()){
-                                onSucessfull("Login successfully");
-                                Intent intent =new Intent(getActivity, MainActivity.class);
-                                getActivity.startActivity(intent);
-                                getActivity.finishAffinity();
+                                view.onSucessfull("Login successfully !");
+
                             }else {
-                                onError("Email or password not correct");
+                                view.onError("Login failed !");
                             }
                         }
                     });
         }
     }
 
-    @Override
-    public void onSucessfull(String mess) {
-        Toast.makeText(getActivity, mess, Toast.LENGTH_SHORT).show();
-    }
 
-    @Override
-    public void onError(String mess) {
-        Toast.makeText(getActivity, mess, Toast.LENGTH_SHORT).show();
-    }
 }
